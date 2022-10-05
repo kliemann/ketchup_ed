@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset=utf-8>
+<meta name=viewport content=width=device-width>
+<style>
+body{
+	overscroll-behavior-y: contain;
+}
+#ED{
+	display:inline-block; /*to provide <div> on return*/
+	font-family: serif;
+	width: 100%;
+	min-height: 3em;
+	white-space: pre-wrap;
+	word-break: break-all;
+	border: 1px dotted black;
+}
+#ED[contenteditable]{
+	border: 1px solid red;
+}
+</style>
+<script>
+ketchup=(ed)=>(
+	ed.innerHTML=ed.innerHTML
+		.replace(/\*\*(.+?)\*\*/gim,'<b>$1</b>')
+		.replace(/~~(.+?)~~/gim,'<i>$1</i>')
+		.replace(/\[\[(.+?)\]\]/gim,'<a target=_blank href=$1>$1</a>'),
+	ed.removeAttribute("contenteditable"),
+)
+unketchup=(ed)=>(
+	ed.innerHTML=ed.innerHTML
+		.replace(/<\/?b>/gim,'**')
+		.replace(/<\/?i>/gim,'~~')
+		.replace(/<a.*?>/gim,'[[').replace(/<\/a>/gim,']]'),
+  	ed.setAttribute("contenteditable","true"),
+)
+</script>
+</head>
+<body>
+ketchup = minimal markup: **<b>bold</b>**, ~~<i>italic</i>~~, [[link]], {{folding text}}, newline = return<hr>
+<pre id=ED contenteditable>
+</pre>
+<button onclick="ketchup(ED)">render</button>
+<button onclick="unketchup(ED)">edit</button>
+</html>

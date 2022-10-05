@@ -26,14 +26,14 @@ ketchup=(ed)=>(
 		.replace(/\*\*(.+?)\*\*/gim,'<b>$1</b>')
 		.replace(/~~(.+?)~~/gim,'<i>$1</i>')
 		.replace(/\[\[(.+?)\]\]/gim,'<a target=_blank href=$1>$1</a>'),
-	ed.removeAttribute("contenteditable"),
+	ed.removeAttribute("contenteditable")
 )
 unketchup=(ed)=>(
 	ed.innerHTML=ed.innerHTML
 		.replace(/<\/?b>/gim,'**')
 		.replace(/<\/?i>/gim,'~~')
 		.replace(/<a.*?>/gim,'[[').replace(/<\/a>/gim,']]'),
-  	ed.setAttribute("contenteditable","true"),
+  	ed.setAttribute("contenteditable","true")
 )
 </script>
 </head>

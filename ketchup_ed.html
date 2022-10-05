@@ -33,7 +33,7 @@ unketchup=(ed)=>(
 		.replace(/<\/?b>/gim,'**')
 		.replace(/<\/?i>/gim,'~~')
 		.replace(/<a.*?>/gim,'[[').replace(/<\/a>/gim,']]'),
-  ed.setAttribute("contenteditable","true"),
+  	ed.setAttribute("contenteditable","true"),
 )
 </script>
 </head>
@@ -41,6 +41,6 @@ unketchup=(ed)=>(
 ketchup = minimal markup: **<b>bold</b>**, ~~<i>italic</i>~~, [[link]], {{folding text}}, newline = return<hr>
 <pre id=ED contenteditable>
 </pre>
-<button onclick="ketchup(ED,SRC)">render</button>
-<button onclick="unketchup(ED,SRC)">edit</button>
+<button onclick="ketchup(ED)">render</button>
+<button onclick="unketchup(ED)">edit</button>
 </html>
